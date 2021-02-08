@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>List</title>
+    </head>
+    <body>
+         {% if alias == "a" %}
+             <h2>Please, see list of Areas</h2>
+             <ul>
+                {% for i in list %}
+                    <li>{{i.strArea}}</li>
+                {% endfor %}
+             </ul>
+         {% elif  alias == "c" %}
+             <h2>Please, see list of Categories</h2>
+             <ul>
+                {% for i in list %}
+                    <li>{{i.strCategory}}</li>
+                {% endfor %}
+             </ul>
+         {% elif  alias == "i" %}
+             <h2>Please, see list of Inredients</h2>
+             <table border = '1'>
+                 <tr>
+                     <th>ID</th>
+                     <th>Ingredient</th>
+                     <th>Description</th>
+                 </tr>
+                 {% for i in list %}
+                     <tr>
+                         <td>{{i.idIngredient}}</td>
+                         <td>{{i.strIngredient}}</td>
+                         <td>{{i.strDescription}}</td>
+                     </tr>
+                {% endfor %}
+             </table>
+        {% endif %}
+    </body>
+</html>
