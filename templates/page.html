@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Greeting{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+{% include 'include/sidebar.html' %}
+    <h1>Hello, Guest. Welcome to our kitchen.</h1>
+        <h4>You have these choices:</h4>
+        <ol>
+            <li>Type /filter/c/"category_name" for filter by Category. For example: <a href = "filter/c/Seafood">/filter/c/Seafood</a></li>
+            <li>Type /filter/i/"ingredient_name" for filter by main Ingredient. For example: <a href = "filter/i/chicken_breast">/filter/i/chicken_breast</a></li>
+            <li>Type /filter/a/"area_name" for filter by Area. For example: <a href = "filter/a/American">/filter/a/American</a></li>
+            <li>Press link or Type <a href = "list/a">/list/a</a> to see list of Areas.</li>
+            <li>Press link or Type <a href = "list/c">/list/c</a> to see list of Categories.</li>
+            <li>Press link or Type <a href = "list/i">/list/i</a> to see list of Ingredients.</li>
+            <li>Press link or Type <a href="categories">/categories</a> to see detail info on Categories.</li>
+            <li>Type /"name" to see detail info on Meal by name. For example: <a href = "Arrabiata">/Arrabiata</a></li>
+        </ol>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

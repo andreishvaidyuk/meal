@@ -1,38 +1,48 @@
-<html>
-    <head>
-        <title>List</title>
-    </head>
-    <body>
-         {% if alias == "a" %}
-             <h2>Please, see list of Areas</h2>
-             <ul>
-                {% for i in list %}
-                    <li>{{i.strArea}}</li>
-                {% endfor %}
-             </ul>
-         {% elif  alias == "c" %}
-             <h2>Please, see list of Categories</h2>
-             <ul>
-                {% for i in list %}
-                    <li>{{i.strCategory}}</li>
-                {% endfor %}
-             </ul>
-         {% elif  alias == "i" %}
-             <h2>Please, see list of Inredients</h2>
-             <table border = '1'>
+{% extends "base.html" %}
+
+{% block title %}List{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+{% include 'include/sidebar.html' %}
+     {% if alias == "a" %}
+<h2>Here you can see a list of <b>Areas</b> whose recipes are in our database</h2>
+         <ul>
+            {% for i in list %}
+             <li><a href="/filter/a/{{i.strArea}}">{{i.strArea}}</a></li>
+            {% endfor %}
+         </ul>
+     {% elif  alias == "c" %}
+<h2>Here you can see a list of <b>Categories</b> whose recipes are in our database</h2>
+         <ul>
+            {% for i in list %}
+             <li><a href="/filter/c/{{i.strCategory}}">{{i.strCategory}}</a></li>
+            {% endfor %}
+         </ul>
+     {% elif  alias == "i" %}
+<h2>Here you can see a list of the main <b>Ingredients</b> for a convenient selection of dishes</h2>
+         <table border = '1'>
+             <tr>
+                 <th>ID</th>
+                 <th>Ingredient</th>
+                 <th>Description</th>
+             </tr>
+             {% for i in list %}
                  <tr>
-                     <th>ID</th>
-                     <th>Ingredient</th>
-                     <th>Description</th>
+                     <td>{{i.idIngredient}}</td>
+                     <td><a href="/filter/i/{{i.strIngredient}}">{{i.strIngredient}}</a></td>
+                     <td>{{i.strDescription}}</td>
                  </tr>
-                 {% for i in list %}
-                     <tr>
-                         <td>{{i.idIngredient}}</td>
-                         <td>{{i.strIngredient}}</td>
-                         <td>{{i.strDescription}}</td>
-                     </tr>
-                {% endfor %}
-             </table>
-        {% endif %}
-    </body>
-</html>
+            {% endfor %}
+         </table>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

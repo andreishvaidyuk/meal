@@ -1,99 +1,112 @@
-<html>
-    <head>
-        <title>Meal detail</title>
-    </head>
-    <body>
-        <!--{{meal_detail}}-->
-        <h2>Please, see detail info on {{meal_detail.strMeal}}</h2>
-        <h4>ID: {{meal_detail.idMeal}}</h4>
-        <h4>Category: {{meal_detail.strCategory}}</h4>
-        <h4>Area: {{meal_detail.strArea}}</h4>
-        <h4>Instructions: {{meal_detail.strInstructions}}</h4>
-        <h4>Image: <a href = "{{meal_detail.strMealThumb}}">{{meal_detail.strMealThumb}}</a></h4>
-        <h4>Youtube: <a href = "{{meal_detail.strYoutube}}">{{meal_detail.strYoutube}}</a></h4>
-        <h4>Ingredients: </h4>
-        <table>
-            <tr>
-                <th>Ingredient</th>
-                <th>Measure</th>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient1}}</td>
-                <td>{{meal_detail.strMeasure1}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient2}}</td>
-                <td>{{meal_detail.strMeasure2}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient3}}</td>
-                <td>{{meal_detail.strMeasure3}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient4}}</td>
-                <td>{{meal_detail.strMeasure4}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient5}}</td>
-                <td>{{meal_detail.strMeasure5}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient6}}</td>
-                <td>{{meal_detail.strMeasure6}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient7}}</td>
-                <td>{{meal_detail.strMeasure7}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient8}}</td>
-                <td>{{meal_detail.strMeasure8}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient9}}</td>
-                <td>{{meal_detail.strMeasure9}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient10}}</td>
-                <td>{{meal_detail.strMeasure10}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient11}}</td>
-                <td>{{meal_detail.strMeasure11}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient12}}</td>
-                <td>{{meal_detail.strMeasure12}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient13}}</td>
-                <td>{{meal_detail.strMeasure13}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient14}}</td>
-                <td>{{meal_detail.strMeasure14}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient15}}</td>
-                <td>{{meal_detail.strMeasure15}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient16}}</td>
-                <td>{{meal_detail.strMeasure16}}</td>
-            </tr><tr>
-                <td>{{meal_detail.strIngredient17}}</td>
-                <td>{{meal_detail.strMeasure17}}</td>
-            </tr><tr>
-                <td>{{meal_detail.strIngredient18}}</td>
-                <td>{{meal_detail.strMeasure18}}</td>
-            </tr><tr>
-                <td>{{meal_detail.strIngredient19}}</td>
-                <td>{{meal_detail.strMeasure19}}</td>
-            </tr>
-            <tr>
-                <td>{{meal_detail.strIngredient20}}</td>
-                <td>{{meal_detail.strMeasure20}}</td>
-            </tr>
-        </table>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Recipe{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+{% include 'include/sidebar.html' %}
+<h2>Here you can find the recipe for cooking <b>{{meal_detail.strMeal}}</b></h2>
+    <h4>Category:</h4>
+    <p>{{meal_detail.strCategory}}</p>
+    <h4>Area:</h4>
+    <p>{{meal_detail.strArea}}</p>
+    <h4>Instructions:</h4>
+    <p>{{meal_detail.strInstructions}}</p>
+    <h4>Image:</h4>
+    <p><a href = "{{meal_detail.strMealThumb}}">{{meal_detail.strMealThumb}}</a></p>
+    <h4>Youtube:</h4>
+    <p><a href = "{{meal_detail.strYoutube}}">{{meal_detail.strYoutube}}</a></p>
+    <h4>Ingredients: </h4>
+    <table border = '1'>
+        <tr>
+            <th>Ingredient</th>
+            <th>Measure</th>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient1}}</td>
+            <td>{{meal_detail.strMeasure1}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient2}}</td>
+            <td>{{meal_detail.strMeasure2}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient3}}</td>
+            <td>{{meal_detail.strMeasure3}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient4}}</td>
+            <td>{{meal_detail.strMeasure4}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient5}}</td>
+            <td>{{meal_detail.strMeasure5}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient6}}</td>
+            <td>{{meal_detail.strMeasure6}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient7}}</td>
+            <td>{{meal_detail.strMeasure7}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient8}}</td>
+            <td>{{meal_detail.strMeasure8}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient9}}</td>
+            <td>{{meal_detail.strMeasure9}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient10}}</td>
+            <td>{{meal_detail.strMeasure10}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient11}}</td>
+            <td>{{meal_detail.strMeasure11}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient12}}</td>
+            <td>{{meal_detail.strMeasure12}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient13}}</td>
+            <td>{{meal_detail.strMeasure13}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient14}}</td>
+            <td>{{meal_detail.strMeasure14}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient15}}</td>
+            <td>{{meal_detail.strMeasure15}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient16}}</td>
+            <td>{{meal_detail.strMeasure16}}</td>
+        </tr><tr>
+            <td>{{meal_detail.strIngredient17}}</td>
+            <td>{{meal_detail.strMeasure17}}</td>
+        </tr><tr>
+            <td>{{meal_detail.strIngredient18}}</td>
+            <td>{{meal_detail.strMeasure18}}</td>
+        </tr><tr>
+            <td>{{meal_detail.strIngredient19}}</td>
+            <td>{{meal_detail.strMeasure19}}</td>
+        </tr>
+        <tr>
+            <td>{{meal_detail.strIngredient20}}</td>
+            <td>{{meal_detail.strMeasure20}}</td>
+        </tr>
+    </table>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

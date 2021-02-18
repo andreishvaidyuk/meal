@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+{% include 'include/sidebar.html' %}
+<h1>Thank you for using our service</h1>
+    <h4>Made by:</h4>
+        <ol>
+            <li>Name: Andrey Shvaidyuk</li>
+            <li>GitHub: <b><a href="https://github.com/andreishvaidyuk">Andrey Shvaidyuk</a></b></li>
+            <li>EMail: a.shvaidyuk@gmail.com</li>
+
+        </ol>
+    <h4>API Source: <a href="https://www.themealdb.com/api.php">TheMealDB</a></h4>
+    <h4>Learned from:</h4>
+        <ol>
+            <li>Name: Rawan Kurmet</li>
+            <li>Instagram: _rawanski</li>
+            <li>Telegram: @ra1ski</li>
+            <li>Site: <b><a href="https://1001developers.com/">1001developers.com</a></b></li>
+        </ol>
+    <h4>Organized by:</h4>
+        <ol>
+            <li>Name: American Space Almaty</li>
+            <li>Instagram: asalmaty</li>
+            <li>EMail: almatymakerspace@gmail.com</li>
+        </ol>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

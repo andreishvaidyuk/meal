@@ -6,18 +6,22 @@ import requests
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from http import HTTPStatus
 
 app = FastAPI()
-# app.mount("\static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 template = Jinja2Templates(directory="templates")
 
 
 class Meal:
     url = "https://www.themealdb.com/api/json/v1/1"
 
-    def greating(self, request: Request):
+    def about(self, request: Request):
+        return template.TemplateResponse("about.html", {"request": request})
+
+    def greeting(self, request: Request):
         """
-        Return grating page
+        Return greeting page
         :param request:
         :return:
         """
@@ -31,8 +35,12 @@ class Meal:
         :return: Meal detail dictionary
         """
         route = self.url + '/search.php?s=' + name
-        result = requests.get(route).json()['meals'][0]
-        return template.TemplateResponse("meal_detail.html", {"request": request, "meal_detail": result})
+        response = requests.get(route)
+        if response.status_code == HTTPStatus.OK:
+            result = response.json()['meals'][0]
+            return template.TemplateResponse("meal_detail.html", {"request": request, "meal_detail": result})
+        else:
+            return "Sorry. Requested page not found."
 
     def get_categories(self, request):
         """
@@ -41,8 +49,12 @@ class Meal:
         :return: Categories detail dictionary
         """
         route = self.url + '/categories.php'
-        result = requests.get(route).json()["categories"]
-        return template.TemplateResponse("categories.html", {"request": request, "categories": result})
+        response = requests.get(route)
+        if response.status_code == HTTPStatus.OK:
+            result = response.json()["categories"]
+            return template.TemplateResponse("categories.html", {"request": request, "categories": result})
+        else:
+            return "Sorry. Requested page not found."
 
     def get_list(self, request, alias):
         """
@@ -51,22 +63,33 @@ class Meal:
         :return:
         """
         route = self.url + '/list.php?' + alias + '=list'
-        result = requests.get(route).json()['meals']
-        return template.TemplateResponse("list.html", {"request": request, "list": result, "alias": alias})
+        response = requests.get(route)
+        if response.status_code == HTTPStatus.OK:
+            result = response.json()['meals']
+            return template.TemplateResponse("list.html", {"request": request, "list": result, "alias": alias})
+        else:
+            return "Sorry. Requested page not found."
 
     def get_filtered(self, request,  alias, name):
         route = self.url + '/filter.php?' + alias + '=' + name
-        result = requests.get(route).json()["meals"]
-        return template.TemplateResponse("filter.html", {"request": request, "filtered_data": result, "filter": name})
+        response = requests.get(route)
+        if response.status_code == HTTPStatus.OK:
+            result = response.json()["meals"]
+            return template.TemplateResponse("filter.html", {"request": request, "filtered_data": result, "filter": name})
+        else:
+            return "Sorry. Requested page not found."
 
 
 meal = Meal()
 
 
 @app.get("/")
-def get_greating(request: Request):
-    return meal.greating(request)
+def get_greeting(request: Request):
+    return meal.greeting(request)
 
+@app.get("/about")
+def get_greeting(request: Request):
+    return meal.about(request)
 
 # List all meal categories
 @app.get("/categories")
